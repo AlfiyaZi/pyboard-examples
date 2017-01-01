@@ -1,3 +1,5 @@
+import framebuf
+
 from display.common import DisplaySPI
 
 
