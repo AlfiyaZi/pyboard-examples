@@ -65,6 +65,7 @@ class SSD1322(DisplaySPI):
 
     def __init__(self, spi, dc, cs, rst=None, width=256, height=64):
         self.buffer = bytearray(width * height // 2)
+        self.framebuf = framebuf.FrameBuffer(self.buffer, width, height, framebuf.GRAY4)
         self.column_addr_limit = bytes([28, 91]) #TODO: autoadjust depending on width. it should be centered I guess
         self.row_addr_limit = bytes([0, height-1])
         super().__init__(spi, dc, cs, rst, width, height)
